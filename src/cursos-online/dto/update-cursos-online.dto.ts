@@ -19,8 +19,8 @@ export class UpdateCursoOnlineDto {
   @IsString()
   nivel: string;
 
-  @IsDate()
-  duracion_horas: Date;
+  @IsString()
+  duracion_horas: string;
 
   @IsNumber()
   costo: number;
@@ -28,8 +28,8 @@ export class UpdateCursoOnlineDto {
   @IsString()
   modalidad: string;
 
-  @IsDate()
-  fecha_inicio: Date;
+  @IsString()
+  fecha_inicio: string;
 
   @IsString()
   estado: string;

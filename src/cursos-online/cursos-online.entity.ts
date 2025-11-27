@@ -21,7 +21,7 @@ export class CursoOnline {
   nivel: string;
 
   @Column()
-  duracion_horas: Date;
+  duracion_horas: string;
 
   @Column()
   costo: number;
@@ -30,7 +30,7 @@ export class CursoOnline {
   modalidad: string;
 
   @Column()
-  fecha_inicio: Date;
+  fecha_inicio: string;
 
   @Column()
   estado: string;
