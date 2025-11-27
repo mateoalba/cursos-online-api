@@ -40,7 +40,7 @@ export class CursosOnlineService {
 
 
 
-  
+
   calcularHoras(horasPorDia: number[]) {
     if (!Array.isArray(horasPorDia) || horasPorDia.length !== 7) {
       return { error: 'El arreglo horasPorDia debe tener exactamente 7 números.' };
@@ -64,4 +64,31 @@ export class CursosOnlineService {
       mensaje,
     };
   }
+
+
+  evaluarAprobacion(notas: number[], notaMinima: number) {
+  if (!Array.isArray(notas) || notas.length < 3 || notas.length > 5) {
+    return { error: 'El arreglo notas debe tener entre 3 y 5 valores numéricos.' };
+  }
+
+  if (typeof notaMinima !== 'number') {
+    return { error: 'notaMinima debe ser un número.' };
+  }
+
+  let suma = 0;
+  for (let i = 0; i < notas.length; i++) {
+    suma += notas[i];
+  }
+
+  const promedio = suma / notas.length;
+
+  const estado = promedio >= notaMinima ? 'APROBADO' : 'REPROBADO';
+  return {
+    notas,
+    notaMinima,
+    promedio: Number(promedio.toFixed(2)),
+    estado,
+  };
+}
+
 }
