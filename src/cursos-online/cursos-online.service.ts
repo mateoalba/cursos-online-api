@@ -37,15 +37,31 @@ export class CursosOnlineService {
     if (!cursoonline) return null;
     return this.cursoonlineRepository.remove(cursoonline);
   }
+
+
+
+  
+  calcularHoras(horasPorDia: number[]) {
+    if (!Array.isArray(horasPorDia) || horasPorDia.length !== 7) {
+      return { error: 'El arreglo horasPorDia debe tener exactamente 7 números.' };
+    }
+
+    let totalHoras = 0;
+    for (let i = 0; i < horasPorDia.length; i++) {
+      totalHoras += horasPorDia[i];
+    }
+
+    const promedio = totalHoras / 7;
+
+    let mensaje = '';
+    if (promedio < 1) mensaje = 'Estás estudiando muy poco';
+    else if (promedio >= 1 && promedio <= 3) mensaje = 'Buen ritmo de estudio';
+    else mensaje = 'Excelente dedicación';
+
+    return {
+      totalHoras,
+      promedio: Number(promedio.toFixed(2)),
+      mensaje,
+    };
+  }
 }
-
-
-
-
-
-
-
-
-
-
-

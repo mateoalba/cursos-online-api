@@ -32,6 +32,9 @@ export class CursosOnlineController {
     return this.cursosOnlineService.remove(id);
   }
 
-
   
+  @Post('horas-semanales')
+  calcularHoras(@Body() body: { horasPorDia: number[] }) {
+    return this.cursosOnlineService.calcularHoras(body.horasPorDia);
+  }
 }
